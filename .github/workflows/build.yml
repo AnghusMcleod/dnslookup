@@ -23,9 +23,9 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ../Dockerfile
+        file: ./Dockerfile
         push: true
-        tags: your-docker-registry/your-repo-name:latest
+        tags: AnghusMcleod/dnslookup:latest
         build-args: |
           API_KEY=$API_KEY
           DEFAULT_DNS_SERVER=$DEFAULT_DNS_SERVER
