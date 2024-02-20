@@ -1,0 +1,31 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v2
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v1
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v2
+      with:
+        context: .
+        file: ./path/to/Dockerfile
+        push: true
+        tags: your-docker-registry/your-repo-name:latest
+        build-args: |
+          API_KEY=$API_KEY
+          DEFAULT_DNS_SERVER=$DEFAULT_DNS_SERVER
