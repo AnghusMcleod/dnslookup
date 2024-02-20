@@ -25,7 +25,7 @@ jobs:
         context: .
         file: ./Dockerfile
         push: true
-        tags: AnghusMcleod/dnslookup:latest
+        tags: AnghusMcleod/dnslookup:alpha
         build-args: |
           API_KEY=$API_KEY
           DEFAULT_DNS_SERVER=$DEFAULT_DNS_SERVER
