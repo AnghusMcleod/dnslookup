@@ -56,3 +56,11 @@ Example:
 bash
 Copy code
 curl -X GET "http://localhost:5000/query-dns/example.com?api_key=<your_api_key>&timeout=3&dns_server=8.8.4.4"
+
+License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+rust
+Copy code
+
+Feel free to use this markdown block directly on GitHub for your project's README.
