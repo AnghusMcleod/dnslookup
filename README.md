@@ -59,9 +59,9 @@ Copy code
       Example:
 
    ```bash
-   curl -X GET "http://localhost:5000/query-dns/example.com?api_key=<your_api_key>&timeout=3&dns_server=8.8.4.4"```
-
-### License
+   curl -X GET "http://localhost:5000/query-dns/example.com?api_key=<your_api_key>&timeout=3&dns_server=8.8.4.4"
+   ```
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
