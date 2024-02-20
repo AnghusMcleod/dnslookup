@@ -23,7 +23,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: ./path/to/Dockerfile
+        file: ../Dockerfile
         push: true
         tags: your-docker-registry/your-repo-name:latest
         build-args: |
