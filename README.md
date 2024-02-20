@@ -1,4 +1,6 @@
-# dnslookup
+
+Certainly, my apologies for the confusion. Here's the entire README in a single markdown block:
+
 markdown
 Copy code
 # dnslookup
@@ -58,10 +60,10 @@ curl -X GET "http://localhost:5000/query-dns/example.com?api_key=<your_api_key>&
 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-rust
+sql
 Copy code
 
-Feel free to use this markdown block directly on GitHub for your project's README.
+Feel free to copy and paste this block directly into your GitHub repository's README.
 
 
 
