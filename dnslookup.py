@@ -1,4 +1,3 @@
-# dnslookup.py
 import re
 import socket
 import dns.resolver
@@ -73,7 +72,7 @@ def query_dns(dns_entry, timeout, dns_server):
         resolver = dns.resolver.Resolver()
         resolver.nameservers = [dns_server]
         # Perform the DNS query
-        response = resolver.query(dns_entry, lifetime=timeout)
+        response = resolver.resolve(dns_entry, lifetime=timeout)
         # Return the successful response with a 200 status code
         return {"status": "success", "message": "DNS query successful", "response": str(response)}, 200
     except dns.resolver.Timeout:
