@@ -1,3 +1,4 @@
+# dnslookup.py
 import re
 import socket
 import dns.resolver
@@ -72,7 +73,7 @@ def query_dns(dns_entry, timeout, dns_server):
         resolver = dns.resolver.Resolver()
         resolver.nameservers = [dns_server]
         # Perform the DNS query
-        response = resolver.resolve(dns_entry, lifetime=timeout)
+        response = resolver.query(dns_entry, lifetime=timeout)
         # Return the successful response with a 200 status code
         return {"status": "success", "message": "DNS query successful", "response": str(response)}, 200
     except dns.resolver.Timeout:
@@ -80,7 +81,7 @@ def query_dns(dns_entry, timeout, dns_server):
         return {"status": "error", "message": "DNS query timed out"}, 504
     except dns.resolver.NXDOMAIN:
         # Return no content, indicating the record was not found
-        return {"status": "success", "message": "No DNS record found"}, 204
+        return "", 204
     except dns.exception.DNSException as e:
         # Return a generic DNS error with a 503 status code
         return {"status": "error", "message": f"DNS query failed: {str(e)}"}, 503
@@ -114,6 +115,19 @@ def handle_dns_query(dns_entry):
         # Return a generic error with a 503 status code if an unknown error occurs
         return {"status": "error", "message": "Unknown error occurred"}, 503
 
-# Run the Flask application
+# Run the Flask application using Gunicorn
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    from gunicorn.app.base import Application
+
+    class FlaskApplication(Application):
+        def init(self, parser, opts, args):
+            return {
+                'bind': '0.0.0.0:5000',
+                'workers': 4  # You can adjust the number of workers based on your needs
+            }
+
+        def load(self):
+            return app
+
+    application = FlaskApplication()
+    application.run()
