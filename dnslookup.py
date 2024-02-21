@@ -81,7 +81,7 @@ def query_dns(dns_entry, timeout, dns_server):
         return {"status": "error", "message": "DNS query timed out"}, 504
     except dns.resolver.NXDOMAIN:
         # Return no content, indicating the record was not found
-        return "", 204
+        return {"status": "success", "message": "No DNS record found"}, 204
     except dns.exception.DNSException as e:
         # Return a generic DNS error with a 503 status code
         return {"status": "error", "message": f"DNS query failed: {str(e)}"}, 503
